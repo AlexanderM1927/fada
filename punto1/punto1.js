@@ -2,10 +2,10 @@ const countingSort = function () {
     
 }
 
-const reservar = function (procedimientos) {
+const reservar = function (procedimientos, horasUsadas, inicio) {
     const auxProcedimientos = []
     let totalHorasUsada = 0
-    for (let index = 0; index < procedimientos.length; index++) {
+    for (let index = inicio; index < procedimientos.length; index++) {
         if (auxProcedimientos.length === 0) {
             auxProcedimientos.push(procedimientos[index])
             totalHorasUsada += procedimientos[index].hFin - procedimientos[index].hInicio
@@ -15,6 +15,11 @@ const reservar = function (procedimientos) {
                 totalHorasUsada += procedimientos[index].hFin - procedimientos[index].hInicio
             }
         }
+    }
+    if (inicio === 0) horasUsadas = totalHorasUsada + 1
+    if (totalHorasUsada < horasUsadas) {
+        inicio++
+        return reservar(procedimientos, totalHorasUsada, inicio)
     }
     console.log(totalHorasUsada)
     return auxProcedimientos

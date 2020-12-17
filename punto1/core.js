@@ -1,7 +1,7 @@
 function analizarContenido(contenido) {
-    console.log(contenido)
-    // const resCounting2 = [{ name: 'Proc3', hInicio: 16, hFin: 21 }, { name: 'Proc1', hInicio: 10, hFin: 20 },{ name: 'Proc2', hInicio: 12, hFin: 14}]
-    // console.log(reservar(resCounting2))
+    // console.log(contenido)
+    const resCounting2 = [{ name: 'Proc3', hInicio: 16, hFin: 21 },{ name: 'Proc1', hInicio: 10, hFin: 20 },{ name: 'Proc2', hInicio: 12, hFin: 14},{ name: 'Proc2', hInicio: 2, hFin: 8}]
+    console.log(reservar(resCounting2, 0, 0))
 }
 
 function descargar(contenido) {

@@ -21,7 +21,7 @@ const reservar = function (procedimientos) {
 }
 
 // const resCounting1 = [{ name: 'Proc3', hInicio: 20, hFin: 24 }, { name: 'Proc1', hInicio: 11, hFin: 15 },{ name: 'Proc2', hInicio: 12, hFin: 14}]
-const resCounting2 = [{ name: 'Proc3', hInicio: 16, hFin: 21 }, { name: 'Proc1', hInicio: 10, hFin: 20 },{ name: 'Proc2', hInicio: 12, hFin: 14}]
+// const resCounting2 = [{ name: 'Proc3', hInicio: 16, hFin: 21 }, { name: 'Proc1', hInicio: 10, hFin: 20 },{ name: 'Proc2', hInicio: 12, hFin: 14}]
 // const resCounting3 = [{ name: 'Proc3', hInicio: 20, hFin: 24 }, { name: 'Proc1', hInicio: 11, hFin: 15 },{ name: 'Proc2', hInicio: 12, hFin: 14}]
 
 
@@ -44,4 +44,4 @@ const resCounting2 = [{ name: 'Proc3', hInicio: 16, hFin: 21 }, { name: 'Proc1',
 // ]
 
 // reservar(resCounting1)
-console.log(reservar(resCounting2))
+// console.log(reservar(resCounting2))

@@ -1,28 +1,26 @@
 function analizarContenido(contenido) {
     // console.log(contenido)
-    const procedimientos = [
+    let procedimientos = [
         {
             name: 'Proc1', 
-            hInicio: 0,
-            hFin: 10
+            hInicio: 15,
+            hFin: 20
         },
         {
             name: 'Proc2', 
-            hInicio: 5,
-            hFin: 6
+            hInicio: 10,
+            hFin: 14
         },
         {
             name: 'Proc3', 
-            hInicio: 11,
-            hFin: 15
+            hInicio: 1,
+            hFin: 9
         }
     ]
-    console.log(procedimientos)
-    console.log('--------------')
-    let newprocedimientos = countingSort(procedimientos, min(procedimientos), max(procedimientos))
-    console.log(newprocedimientos)
+    // procedimientos = countingSort(procedimientos, min(procedimientos), max(procedimientos))
     // procedimientos = procedimientos.reverse()
-    console.log(reservar(newprocedimientos, 0, 0))
+    // console.log(procedimientos)
+    console.log(reservar(procedimientos, 0, 0))
 }
 
 function descargar(contenido) {

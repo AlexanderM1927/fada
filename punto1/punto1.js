@@ -35,26 +35,26 @@ let min = (arr) => {
     return min
 }
 
-const reservar = function (procedimientos, horasUsadas, inicio) {
+const reservar = function (procedimientos, horasUsadasAntes, ejecuciones) {
     const auxProcedimientos = []
-    let totalHorasUsada = 0
-    for (let index = inicio; index < procedimientos.length; index++) {
+    let totalHorasUsadas = 0
+    for (let index = ejecuciones; index < procedimientos.length; index++) {
         if (auxProcedimientos.length === 0) {
             auxProcedimientos.push(procedimientos[index])
-            totalHorasUsada += procedimientos[index].hFin - procedimientos[index].hInicio
+            totalHorasUsadas += procedimientos[index].hFin - procedimientos[index].hInicio
         } else {
-            if (auxProcedimientos[auxProcedimientos.length - 1].hInicio >= procedimientos[index].hFin) {
+            if (auxProcedimientos[auxProcedimientos.length - 1].hInicio >= procedimientos[index].hFin || auxProcedimientos[auxProcedimientos.length - 1].hFin <= procedimientos[index].hInicio) {
                 auxProcedimientos.push(procedimientos[index])
-                totalHorasUsada += procedimientos[index].hFin - procedimientos[index].hInicio
+                totalHorasUsadas += procedimientos[index].hFin - procedimientos[index].hInicio
             }
         }
     }
-    if (inicio === 0) horasUsadas = totalHorasUsada + 1
-    if (totalHorasUsada < horasUsadas) {
-        inicio++
-        return reservar(procedimientos, totalHorasUsada, inicio)
+    console.log(totalHorasUsadas)
+    if (horasUsadasAntes === 0) horasUsadasAntes = totalHorasUsadas + 1
+    if (totalHorasUsadas < horasUsadasAntes && ejecuciones < procedimientos.length) {
+        ejecuciones++
+        return reservar(procedimientos, horasUsadasAntes, ejecuciones)
     }
-    console.log(totalHorasUsada)
     return auxProcedimientos
 }
 

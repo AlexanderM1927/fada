@@ -7,11 +7,11 @@ let countingSort = (arr, min, max) => {
         count[i] = 0;
     }
     for (i = 0; i < len; i++) {
-        count[arr[i].hFin] += 1;
+        count[arr[i]] += 1;
     }
     for (i = min; i <= max; i++) {
         while (count[i] > 0) {
-            arr[j].hFin = i;
+            arr[j] = i;
             j++;
             count[i]--;
         }
@@ -22,7 +22,7 @@ let countingSort = (arr, min, max) => {
 let max = (arr) => {
     let max = 0
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i].hFin >= max) max = arr[i].hFin
+        if (arr[i].duracion >= max) max = arr[i].duracion
     }
     return max
 }
@@ -30,37 +30,34 @@ let max = (arr) => {
 let min = (arr) => {
     let min = max(arr)
     for (let j = 0; j < arr.length; j++) {
-        if (min >= arr[j].hFin) min = arr[j].hFin
+        if (min >= arr[j].duracion) min = arr[j].duracion
     }
     return min
 }
 
-const reservar = function (procedimientos, horasUsadasAntes, ejecuciones) {
-    const auxProcedimientos = []
-    let totalHorasUsadas = 0
-    for (let index = ejecuciones; index < procedimientos.length; index++) {
-        if (auxProcedimientos.length === 0) {
-            auxProcedimientos.push(procedimientos[index])
-            totalHorasUsadas += procedimientos[index].hFin - procedimientos[index].hInicio
+let putDuracion = (arr) => {
+    for (let z = 0; z < arr.length; z++) {
+        arr[z].duracion = arr[z].hFin - arr[z].hInicio
+    }
+    return arr
+}
+
+
+//ASUMIMOS QUE LOS PROCEDIMIENTOS ESTÁN ORDENADOS DE MAYOR DURACION A MENOR
+const reservarVoraz = function (procedimientos) {
+    const res = []
+    let horasUsadas = 0
+    for (let i = 0; i < procedimientos.length; i++) {
+        if (res.length === 0) {
+            horasUsadas += procedimientos[i].duracion
+            res.push(procedimientos[i])
         } else {
-            if (auxProcedimientos[auxProcedimientos.length - 1].hInicio >= procedimientos[index].hFin || auxProcedimientos[auxProcedimientos.length - 1].hFin <= procedimientos[index].hInicio) {
-                auxProcedimientos.push(procedimientos[index])
-                totalHorasUsadas += procedimientos[index].hFin - procedimientos[index].hInicio
+            if (procedimientos[i].hInicio >= procedimientos[i-1].hFin || procedimientos[i].hFin <= procedimientos[i - 1].hInicio) {
+                res.push(procedimientos[i])
+                horasUsadas += procedimientos[i].duracion
             }
         }
     }
-    console.log(totalHorasUsadas)
-    if (horasUsadasAntes === 0) horasUsadasAntes = totalHorasUsadas + 1
-    if (totalHorasUsadas < horasUsadasAntes && ejecuciones < procedimientos.length) {
-        ejecuciones++
-        return reservar(procedimientos, horasUsadasAntes, ejecuciones)
-    }
-    return auxProcedimientos
+    console.log('horas usadas = ' + horasUsadas)
+    return res
 }
-
-// const resCounting1 = [{ name: 'Proc3', hInicio: 20, hFin: 24 }, { name: 'Proc1', hInicio: 11, hFin: 15 },{ name: 'Proc2', hInicio: 12, hFin: 14}]
-// const resCounting2 = [{ name: 'Proc3', hInicio: 16, hFin: 21 }, { name: 'Proc1', hInicio: 10, hFin: 20 },{ name: 'Proc2', hInicio: 12, hFin: 14}]
-// const resCounting3 = [{ name: 'Proc3', hInicio: 20, hFin: 24 }, { name: 'Proc1', hInicio: 11, hFin: 15 },{ name: 'Proc2', hInicio: 12, hFin: 14}]
-
-// reservar(resCounting1)
-// console.log(reservar(resCounting2))

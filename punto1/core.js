@@ -3,24 +3,26 @@ function analizarContenido(contenido) {
     let procedimientos = [
         {
             name: 'Proc1', 
-            hInicio: 15,
+            hInicio: 11,
             hFin: 20
         },
         {
             name: 'Proc2', 
             hInicio: 10,
-            hFin: 14
+            hFin: 17
         },
         {
             name: 'Proc3', 
-            hInicio: 1,
-            hFin: 9
+            hInicio: 20,
+            hFin: 22
         }
     ]
+    procedimientos = putDuracion(procedimientos)
     // procedimientos = countingSort(procedimientos, min(procedimientos), max(procedimientos))
     // procedimientos = procedimientos.reverse()
+    // console.log('counting sort')
     // console.log(procedimientos)
-    console.log(reservar(procedimientos, 0, 0))
+    console.log(reservarVoraz(procedimientos))
 }
 
 function descargar(contenido) {
